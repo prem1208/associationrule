@@ -1,0 +1,78 @@
+Prepare rules for the all the data sets 
+1) Try different values of support and confidence. Observe the change in number of rules for different support,confidence values
+#Book dataset
+#support=0.0026 confidence= 0.1
+
+install.packages("arules")
+library("arules")
+book<-read.transactions("C://Users//PREM//Desktop//Assignments//Association rule//book.csv", format="basket")
+summary(book)
+install.packages("arulesViz")
+library("arulesViz")
+arule<-apriori(book,parameter = list(support=0.0003,confidence=0.2))
+
+Result:1 rules
+
+#support=0.0003 confidence= 0.2
+Result: 1 rules
+
+2) Change the minimum length in apriori algorithm
+
+#support=0.0003 confidence= 0.2 minlen=2
+Result: 1 rules
+
+install.packages("arules")
+library("arules")
+book<-read.transactions("C://Users//PREM//Desktop//Assignments//Association rule//book.csv", format="basket")
+summary(book)
+install.packages("arulesViz")
+library("arulesViz")
+arule<-apriori(book,parameter = list(support=0.0003,confidence=0.2,minlen=2))
+
+#support=0.0003 confidence= 0.2 minlen=2
+Result: 0 rules
+
+3) Visulize the obtained rules using different plots 
+Attached
+
+
+
+#My_movies dataset
+
+#support=0.014 confidence= 0.3 minlen=2
+Result: 245 rules
+
+movie<-read.transactions("C://Users//PREM//Desktop//Assignments//Association rule//my_movies.csv", format="basket")
+summary(movie)
+movie_rule<-apriori(movie,parameter = list(support=0.014,confidence=0.3,minlen=2))
+
+#support=0.050 confidence= 0.7 minlen=2
+Result: 238 rules
+
+#support=0.050 confidence= 0.7 minlen=3
+Result: 181 rules
+
+plot(movie_rule)
+plot(movie_rule, method = "graph")
+plot(movie_rule, method = "grouped")
+
+
+#dataset groceries
+
+grocery<-read.transactions("C://Users//PREM//Desktop//Assignments//Association rule//groceries.csv", format="basket")
+summary(grocery)
+grocery_rule<-apriori(grocery,parameter = list(support=0.00050,confidence=0.7,minlen=3))
+
+Result: 661 Rules
+
+#support=0.0050,confidence=0.5,minlen=3
+Result: 7 rules
+
+#support=0.003,confidence=0.9,minlen=3
+Result: 10 rules
+
+#support=0.0003,confidence=0.6,minlen=4
+Result:1454 rules
+
+
+
